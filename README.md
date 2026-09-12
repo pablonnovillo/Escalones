@@ -2,7 +2,7 @@
 
 ESCALONES es una plataforma web desarrollada para una imprenta, librería y espacio de coworking con atención las 24 horas.
 
-El proyecto surge con el objetivo de centralizar en un mismo sistema diferentes necesidades, especialmente de estudiantes y personas que trabajan o estudian fuera de sus hogares. La plataforma permite gestionar pedidos de impresión, comprar productos de librería, realizar reservas y gestionar distintos servicios desde un mismo lugar.
+El proyecto surge con el objetivo de centralizar en un mismo sistema diferentes necesidades, especialmente de estudiantes y personas que trabajan o estudian fuera de sus hogares. La plataforma permite realizar pedidos de impresión, comprar productos de librería, realizar reservas y gestionar distintos servicios desde un mismo lugar.
 
 ## Funcionalidades principales
 
@@ -58,29 +58,90 @@ El proyecto se encuentra dividido en dos aplicaciones principales:
 
 - MySQL
 
-## Integraciones
+## Integraciones y librerías principales
 
 - Mercado Pago — procesamiento de pagos.
+- Laravel Sanctum / JWT Auth — autenticación y seguridad.
 - PHPMailer — envío de correos electrónicos.
-- Laravel Sanctum / JWT — autenticación y seguridad.
 - Axios — comunicación entre frontend y API.
+- Bootstrap — diseño y componentes de interfaz.
+- React Router DOM — navegación del frontend.
+- React Toastify — notificaciones al usuario.
+- Flatpickr / React Flatpickr — selección y gestión de fechas.
+- Card Validator — validación de datos de tarjetas.
 - jsPDF / PDF.js — generación y visualización de documentos PDF.
+- Popper.js — posicionamiento de componentes de interfaz.
 
 ## Requisitos previos
 
-Para ejecutar el proyecto localmente se requiere:
+Para ejecutar el proyecto localmente se requiere tener instalado:
 
 - Node.js y npm
 - PHP 8.2 o superior
 - Composer
+- XAMPP
 - MySQL
-- XAMPP o entorno equivalente
 
 ## Cómo ejecutar el proyecto
 
-### Frontend
+### 1. Base de datos
 
-Ingresar a la carpeta:
+Abrir XAMPP e iniciar los servicios:
+
+- Apache
+- MySQL
+
+Luego ingresar desde el navegador a:
+
+```text
+http://localhost/phpmyadmin
+```
+
+Verificar que exista la base de datos utilizada por ESCALONES.
+
+La configuración de conexión con MySQL se realiza mediante el archivo `.env` del backend.
+
+### 2. Backend
+
+Abrir una terminal e ingresar a la carpeta del backend:
+
+```bash
+cd escalone-api
+```
+
+Instalar las dependencias:
+
+```bash
+composer install
+```
+
+Ejecutar las migraciones de la base de datos:
+
+```bash
+php artisan migrate
+```
+
+Cargar los datos iniciales:
+
+```bash
+php artisan db:seed
+```
+
+Iniciar el servidor de Laravel:
+
+```bash
+php artisan serve
+```
+
+Si todo se ejecuta correctamente, el backend estará disponible normalmente en:
+
+```text
+http://127.0.0.1:8000
+```
+
+### 3. Frontend
+
+Abrir otra terminal e ingresar a la carpeta del frontend:
 
 ```bash
 cd escalone
@@ -92,53 +153,51 @@ Instalar las dependencias:
 npm install
 ```
 
-Ejecutar el servidor de desarrollo:
+Iniciar el servidor de desarrollo:
 
 ```bash
 npm run dev
 ```
 
-El frontend se ejecutará mediante Vite, normalmente en:
+Si todo se ejecuta correctamente, Vite mostrará una dirección similar a:
 
 ```text
 http://localhost:5173
 ```
 
-### Backend
+### 4. Acceso al sistema
 
-Ingresar a la carpeta:
+Con el backend y frontend ejecutándose, abrir en el navegador:
 
-```bash
-cd escalone-api
+```text
+http://localhost:5173
 ```
 
-Instalar las dependencias de PHP:
+El frontend desarrollado en React se comunica con la API desarrollada en Laravel para acceder a las funcionalidades y datos del sistema.
 
-```bash
-composer install
-```
+## Variables de entorno
 
-Configurar el archivo `.env` con los datos correspondientes a la base de datos y demás servicios utilizados.
+El proyecto utiliza variables de entorno para configurar la conexión con la base de datos y diferentes servicios externos.
 
-Ejecutar Laravel:
+Por seguridad, los archivos `.env` que contienen credenciales reales no se incluyen en el repositorio.
 
-```bash
-php artisan serve
-```
+El archivo `.env.example` del backend puede utilizarse como referencia para realizar la configuración necesaria.
 
-## Base de datos
+## Puertos utilizados
 
-El sistema utiliza MySQL como motor de base de datos.
+| Servicio | Puerto |
+|---|---|
+| Frontend (React + Vite) | 5173 |
+| Backend (Laravel) | 8000 |
+| MySQL | 3306 |
 
-La configuración de conexión se realiza mediante las variables correspondientes del archivo `.env` del backend.
-
-Por seguridad, los archivos `.env` con credenciales reales no se incluyen en el repositorio.
-
-## Estado del proyecto
+## Estado actual del proyecto
 
 ESCALONES se encuentra actualmente en desarrollo.
 
-La plataforma web cuenta con una parte importante de sus funcionalidades implementadas. Como evolución futura del proyecto se contempla complementar el sistema con una aplicación móvil.
+La plataforma web cuenta con una parte importante de sus funcionalidades implementadas y se continúa trabajando en mejoras y nuevas funcionalidades.
+
+Como evolución futura del proyecto se contempla complementar el sistema con una aplicación móvil.
 
 ## Autor
 
