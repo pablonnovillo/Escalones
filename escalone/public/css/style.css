@@ -1,0 +1,320 @@
+* {
+    font-family: "Syne", sans-serif;
+    font-optical-sizing: auto;  
+    font-style: normal;     
+}
+
+body{
+    background-image: url('./../images/fondo.png');
+    background-size:100px;
+    
+}
+
+hr{
+    opacity: 0.6;
+}
+
+/*estilos personalizados*/
+
+/*.alert-custom-info{
+    padding: 4px !important;
+    background-color:#29abe2 !important;
+    color:#fff !important;
+}
+
+.alert-custom-danger{
+    padding: 4px !important;
+    background-color:#f80000 !important;
+    color:#fff !important;
+}*/
+
+.enviando {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000000;
+    letter-spacing: 1px;
+    animation: pulse 1.2s infinite ease-in-out;
+}
+
+.registrando {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    animation: pulse 1.2s infinite ease-in-out;
+}
+/*.enviando::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    animation: dots 1.5s steps(3, end) infinite;
+}*/
+
+@keyframes pulse {
+     0%   { opacity: 0.4; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+/*@keyframes dots {
+    0%   { content: ''; }
+    33%  { content: '.'; }
+    66%  { content: '..'; }
+    100% { content: '...'; }
+}*/
+
+
+.navbar-width-1200{
+    width: 2000px;
+}
+
+.style-login{    
+    padding: 0 30px;
+    word-spacing: 3px;
+    border-radius: 50px;
+    background-color: antiquewhite;
+    
+}
+.style-login a{
+    color:black !important; 
+}
+
+.pointer{
+    cursor: pointer;
+}
+.custom-color-blue-marine {
+    color: #003366;
+}
+
+.custom-font-weight-700 {
+    font-weight: 700;
+}
+.custom-font-weight-500{
+    font-weight: 500;
+}
+
+.custom-bg-blue-marine {
+    background-color: #003366;    
+}
+
+.custom-family-arial {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom-border-top-10{
+    border-top: 10px solid black;
+}
+
+.container_logo {    
+    width: 3.2rem;
+    margin-right: 5px;
+}
+
+.custom_brand {    
+    font-family: "Smooch Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 450;  
+    font-size: 2.2rem !important;
+   
+}
+
+.bg-custom-main {
+    background: #0071bc;
+}
+
+.slide {
+    background: #29abe2;
+    border-bottom: 2px solid;
+    height:700px;
+}
+.slide_section{
+    /*top: 60%;*/
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.slide_enlaces {
+    max-width: 660px;
+}
+
+.slide_logo {
+    width: 50%;
+}
+
+/*estilo de la cabecera superior*/
+.head-logo{        
+    height: 150px;
+}
+
+.head-logo p{
+    font-family: "Smooch Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;  
+    font-size: 3rem;    
+    width: 95%;
+    /*flex-grow: 2;*/
+    word-spacing: 20px;
+}
+.head-logo article{    
+    width: 5%;
+}
+.head-logo article img{    
+    width: 100%;
+}
+
+/*Fin de estilos de cabecera suberior*/
+/*estilo tabla*/
+.table-custom-blue-marine{
+    --bs-table-bg:#003366;
+    --bs-table-color:white;
+}
+/*fin estilo tabla*/
+
+
+/*reemplazado por bootstrap objecti-fit-cover*/
+/*.img-portada{
+    object-fit: cover;
+}*/
+/*estilos quienes somos*/
+.custom_about_us {
+    padding-right: 35px;
+}
+
+.profiles .profiles_carnet {
+    width: 200px;
+    height: 200px;
+    /*object-fit: cover;*/ /*reemplazado por bootstrap objecti-fit-cover*/
+}
+
+.profiles .profiles_carnet:first-child {
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.profiles .profiles_carnet:last-child {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 0;
+}
+
+/*estilos FAQ*/
+
+.faq_subtitle {
+    font-weight: bolder;
+    font-size: 15pt;
+    word-spacing: 3pt;
+    background-color: #29abe2 !important;
+    color: #fff !important;
+    margin: 10px 0;
+    border: 3px solid #0071bc !important;
+}
+
+/*estilos socios marcas*/
+.brand_partners_art {
+    margin: 10px 0;
+}
+
+.brand_partners_item{
+    background-color: #fff;
+    height: 200px;    
+    object-fit: contain;
+    box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.75);
+    padding: 0 10px;
+}
+/*.brand_partners_item {
+    object-fit: contain;
+    width: 250px;
+    height: 100%;
+}*/
+
+/*
+estilos pagina services
+*/
+.img_height_500{
+    height: 500px;
+}
+
+.img_resize_custom{    
+    height: 250px;
+    object-position: center top;
+}
+
+/*estilo para pago confirmado*/
+.width-static-25{
+    width: 350px;
+}
+
+/*estilo para seleccionar imagen RESERVA TURNO*/
+.seleccionado{
+    border:3px solid #00aaff;
+}
+
+
+footer {
+    background-color: black;
+}
+
+.custom-card{
+    height: 600px;
+}
+
+.custom-card p{
+    /*height: 600px;*/
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+/*estilos responsive*/
+@media (max-width:992px) {
+    .head-logo{
+        height: 180px;
+    }
+    .head-logo article{
+        width: 10%;
+    }
+    .head-logo p{
+        font-size: 2.5rem;
+    }
+    .style-login{
+        width: 300px;
+        text-align: center;
+    }
+
+    /*estilo mobile menu*/
+    .border-bottom-md{
+        border-bottom: 1px dotted lightblue;
+    }
+}
+@media (max-width:767px) {
+    .custom_brand {
+        max-width: 300px;
+    }
+
+    /*ajustar imagenes en responsive movil de sevicios*/
+    .img_resize_custom{
+        width: 200px;
+    }
+
+    .head-logo p{
+        font-size: 1.5rem;
+    }
+    .head-logo article{
+        width: 15%;
+    }
+}
+
+@media (min-width:767px) {
+    .width-md-50{
+        width: 50%;
+    }
+}
+
+@media (max-width:575px) {
+    .brand_partners_item{                 
+        display: block;        
+        margin: 0 auto;
+        width: 300px;
+    }
+}
+

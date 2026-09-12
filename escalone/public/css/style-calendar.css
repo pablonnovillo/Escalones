@@ -1,0 +1,65 @@
+.flatpickr-calendar{
+    height: 300px;
+}
+.flatpickr-input{
+    display: none;
+}
+/* Cambiar color del mes */
+.flatpickr-current-month {
+    color: #003366;
+    /* Azul oscuro */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flatpickr-monthDropdown-months {
+    font-weight: bold !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Cambiar color del año */
+.flatpickr-current-month .numInput.cur-year {
+    color: #003366;
+    /* Azul oscuro */
+    font-weight: bold;
+}
+
+/* Cambiar color de los días de la semana (Mon, Tue, ...) */
+.flatpickr-weekday {
+    color: #003366 !important;
+    /* Azul oscuro */
+    font-weight: bold !important;
+    font-size: 12px !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flatpickr-day {
+    color: #003366 !important;
+    /* texto blanco para contraste */
+    font-weight: 600 !important;
+    /* letra negrita */
+}
+
+.flatpickr-day:not(.flatpickr-disabled):not([aria-disabled="true"]):hover {
+    background-color: #003366 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+}
+
+.flatpickr-day.selected:not(.flatpickr-disabled):not([aria-disabled="true"]) {
+    background-color: #003366 !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    box-shadow: 0 0 8px 2px rgba(0, 51, 102, 0.7);
+    border-radius: 4px;
+}
+
+.flatpickr-day.disabled {
+    color: #ccc !important;
+    /* texto gris claro */
+    background-color: #f8f9fa !important;
+    /* fondo claro */
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    /* para prevenir interacción */
+    opacity: 0.5;
+}

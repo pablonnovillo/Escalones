@@ -1,0 +1,1 @@
+export const contarImagenes = (files) => files.filter(f => f.type.startsWith("image/")).length;
