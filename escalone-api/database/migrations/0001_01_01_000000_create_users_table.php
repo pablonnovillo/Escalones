@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('email', 60)->unique();            
             $table->text('password');
             $table->enum('activo', ['0','1'])->default('0'); //
-            $table->text('comentario')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();
         });

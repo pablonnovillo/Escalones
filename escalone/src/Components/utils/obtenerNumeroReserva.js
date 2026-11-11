@@ -9,13 +9,18 @@ export const ObtenerNumeroReserva = async () => {
             }
         })        
 
-        if (resp.ok) {
+        if (resp.ok) {            
             const data = await resp.json()
-            console.log(data)            
+            if(typeof data.error !== 'undefined'){
+                return Number(12345)        
+            }
+            //console.log(data)            
             return Number(data.numero_reserva) + 1
-        }        
-        return Number(12345)
+        }
+
+        return NaN;        
+        
     } catch (error) {                
-        return NaN
+        return NaN;
     }
 }

@@ -59,7 +59,7 @@ class ContactController extends Controller
 
             $mail->isHTML(true);
             $mail->Subject = 'Nuevo contacto recibido';
-            $mail->Body    = 'Hola soy ' . $name . ', y mi mensaje es: <br>' . $messageContent;
+            $mail->Body    = 'Hola mi nombre es ' . $name . ', y consulta es <br>' . $messageContent;
 
             $mail->send();           
 

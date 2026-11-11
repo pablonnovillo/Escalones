@@ -9,7 +9,7 @@ export default defineConfig({
     allowedHosts: [
       'unrivalable-ayana-oligopoly.ngrok-free.dev', // tu URL de ngrok
       'localhost',
-      '127.0.0.1'
+      '127.0.0.1',      
     ],
   },
 })

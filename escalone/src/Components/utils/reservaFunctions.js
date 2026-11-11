@@ -2,7 +2,7 @@ import { COSTO_RESERVA_POR_HORA } from "../dataConstants/price";
 
 export const getImagenTipoCafe = (tipoCafe) => {
     switch (tipoCafe) {
-        case "Café": return "./images/consumo/cafe.png";
+        case "Café": return "/images/consumo/cafe.png";
         case "Café express": return "/images/consumo/cafe-express.png";
         case "Café cortado": return "/images/consumo/cafe-cortado.png";
         case "Café con leche": return "/images/consumo/cafe-con-leche.png";

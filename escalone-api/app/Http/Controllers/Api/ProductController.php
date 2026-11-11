@@ -61,6 +61,6 @@ class ProductController extends Controller
                 'message' => $e->getMessage(),
                 'error'   => 'Tuvimos problemas con la conexión de base de datos, contactese con el administrador del sitio.'
                 ], 500, [], JSON_UNESCAPED_UNICODE);
-            }
+        }
     }   
 }

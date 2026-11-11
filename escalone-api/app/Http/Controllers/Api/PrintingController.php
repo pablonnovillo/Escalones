@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Traits\SendMultipleFiles;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PrintingController extends Controller
 {
@@ -72,8 +73,7 @@ class PrintingController extends Controller
                 ['email' => $request->email_cliente],
                 ['password'=>Hash::make(env('PASSWORD_GENERIC')),
                 'nombre_usuario' => $request->nombre_cliente,
-                'telefono' => $request->telefono_cliente,                
-                'comentario' => $request->comentario_cliente,
+                'telefono' => $request->telefono_cliente,
             ]);
 
             $order = Order::create([
@@ -100,6 +100,7 @@ class PrintingController extends Controller
                 $printing = Printing::create([                    
                     'file'=>$file->getClientOriginalName(),
                     'tipo_papel'=>$request->tipo_papel,
+                    'comentario' => $request->comentario_cliente,
                     'num_copias'=>$request->num_copias,
                     'precio_total'=>$request->precio_total,                
                 ]);
@@ -133,5 +134,62 @@ class PrintingController extends Controller
             ],500);
 
         }
-    }    
+    }
+
+    public function userPrintings()
+    {
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+
+            $impresiones = DB::table('printings')
+                ->join('printings_orders','printings.id', '=','printings_orders.printing_id')
+                ->join('orders','printings_orders.order_id','=','orders.id')
+                ->join('users_orders','orders.id','=','users_orders.order_id')
+                ->where('users_orders.user_id', $user->id)
+                ->select(
+                    'printings.id',
+                    'printings.file',
+                    'printings.tipo_papel',
+                    'printings.num_copias',
+                    'printings.precio_total as precio_impresion',
+                    'printings.created_at',
+                    'orders.numero_pedido',
+                    'orders.modo_entrega',
+                    'orders.dirección_envio',
+                    'orders.precio_total as precio_orden'
+                )->get();
+
+                if($impresiones->isEmpty())
+                {
+                    return response()->json([
+                        'status'=>false,
+                        'message'=>'Aún no tenés impresiones realizadas',
+                        'data'=>[]
+                    ],200);                    
+                }
+
+                return response()->json([
+                    'status'=>true,
+                    'message'=>'Impresiones obtenidas con exito',
+                    'data'=> $impresiones
+                ]);
+
+        }catch(\Timon\JWTAuth\Exceptions\JWTException $e) { 
+            return response()->json([
+                'status'=>false,
+                'error'=>'Token invalido o vencido',
+                'message'=>$e->getMessage()
+            ],401);
+
+        }catch (\Exception $e) {
+            \Log::error("Error en userPrintings: " . $e->getMessage());
+            return response()->json([
+                'status'=>false,
+                'error'=> 'Error al obtener las impresiones',
+                'message'=> $e->getMessage()
+            ], 500);            
+        }
+    }
+
+
 }

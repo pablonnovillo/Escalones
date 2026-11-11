@@ -9,6 +9,7 @@ import { CAFE_PRECIOS, SWEET_PRECIOS } from '../dataConstants/price';
 import { getImagenConsumo, generarDatosTurnos } from '../utils/reservaFunctions';
 import { limpiarLocalStorage } from '../utils/storageHelpers';
 import { ApiHelpers } from '../utils/apiHelpers';
+import { Link } from 'react-router-dom'
 
 const ReservasTurnos = () => {
     const navigate = useNavigate()
@@ -16,7 +17,7 @@ const ReservasTurnos = () => {
     const [selectedDate, setSelectedDate] = useState(null)
     const [selected, setSelected] = useState(null)
     const [horaInicio, setHoraInicio] = useState("09:00")
-    const [horaFinal, setHoraFinal] = useState("08:00")
+    const [horaFinal, setHoraFinal] = useState("10:00")
     const [email, setEmail] = useState(usuario ? usuario.email : "")
     const [tipoCafe, setTipoCafe] = useState("")
     const [sweet, setSweet] = useState("")
@@ -27,7 +28,7 @@ const ReservasTurnos = () => {
 
     const location = useLocation();
     const pathParts = location.pathname.split('/');
-    const servicio = pathParts[pathParts.length - 1]; 
+    const servicio = pathParts[pathParts.length - 1];    
     //console.log(servicio)
     useEffect(() => {
         const precioCafe = tipoCafe ? CAFE_PRECIOS[tipoCafe] || 0 : 0
@@ -73,7 +74,7 @@ const ReservasTurnos = () => {
 
             const respuesta = await ApiHelpers(response)
 
-            console.log(respuesta)
+            //console.log(respuesta)
 
             toast.error(respuesta)
         }
@@ -88,7 +89,12 @@ const ReservasTurnos = () => {
     return (
         <>
             <section id="order" className="mb-3">
-                <h1 className="text-center mt-3">RESERVA SU TURNO</h1>
+                <section className="container d-flex">
+                    <div className="flex-grow-0 d-flex flex-column justify-content-center">
+                        <Link to="/servicios" className="link-secondary"> <i className="fa-solid fa-angle-left"></i> Atras</Link>
+                    </div>
+                    <h1 className="text-center mt-3 flex-grow-1">RESERVA SU TURNO</h1>
+                </section>                
                 <section>
                     <hr className="container" />
                     {loading ? <div className='text-center enviando'>Enviando...</div> : ""}
@@ -133,7 +139,7 @@ const ReservasTurnos = () => {
                                                         <option value="">--</option>
                                                         {
                                                             Array.from({ length: 23 }, (_, i) => {
-                                                                const hora = 1 + i;
+                                                                const hora = 0 + i;                                                                
                                                                 const value = `${hora.toString().padStart(2, "0")}:00`;
                                                                 return (
                                                                     <option key={value} value={value}>{value}</option>
@@ -143,9 +149,10 @@ const ReservasTurnos = () => {
                                                     </select>
                                                 </div>
                                                 <div className="mb-3 ms-5 ms-md-3">
-                                                    <label htmlFor="endTime" className="custom-color-blue-marine">
-                                                        Hasta
-                                                    </label>
+                                                    <label 
+                                                        htmlFor="endTime" 
+                                                        className="custom-color-blue-marine"
+                                                    >Hasta</label>
                                                     <br />
                                                     <select
                                                         name="endTime"
@@ -157,7 +164,7 @@ const ReservasTurnos = () => {
                                                         <option value="">--</option>
                                                         {
                                                             Array.from({ length: 23 }, (_, i) => {
-                                                                const hora = 1 + i;
+                                                                const hora = 1 + i;                                                                           
                                                                 const value = `${hora.toString().padStart(2, "0")}:00`;
                                                                 return (
                                                                     <option key={value} value={value}>{value}</option>

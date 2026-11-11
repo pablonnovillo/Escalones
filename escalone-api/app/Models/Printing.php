@@ -12,6 +12,7 @@ class Printing extends Model
     protected $fillable = [
         'file',
         'tipo_papel',
+        'comentario',
         'num_copias',        
         'precio_total',
     ];

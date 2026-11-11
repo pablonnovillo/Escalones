@@ -51,17 +51,17 @@ const PagoVerificado = () => {
 
             const infoCorreo = localStorage.getItem('email')
             const methodPayment = localStorage.getItem("modo-pago")
-            const formaEntrega = localStorage.getItem('modo_entrega')
-            const domicilioActual = localStorage.getItem('domicilio')
+            //const formaEntrega = localStorage.getItem('modo_entrega')
+            //const domicilioActual = localStorage.getItem('domicilio')
 
 
             if (carritoCompleto) {
                 const dataCarrito = JSON.parse(carritoCompleto)
                 setTipoServicio("carrito")
                 setData(JSON.parse(carritoCompleto))
-                setModoEntrega(formaEntrega)
-                setDomicilio(domicilioActual)
-                setEmail(infoCorreo)
+                setModoEntrega(dataCarrito.modo_entrega)
+                setDomicilio(dataCarrito.domicilio)
+                setEmail(infoCorreo || dataCarrito.email)
                 setModoPago(methodPayment)                                
                 enviarPedidoCarrito(dataCarrito)                                
                 return
@@ -101,9 +101,10 @@ const PagoVerificado = () => {
 
         const payload = {
             ...info,
-            numero_pedido: numUnicoPedido,
-            modo_entrega: modoEntrega,
+            numero_pedido: numUnicoPedido,            
         }
+        console.log(payload)
+        //return;
         try {
             const resp = await fetch(`${URL_API}/api/abonar-carrito`, {
                 method: "POST",
@@ -111,8 +112,11 @@ const PagoVerificado = () => {
                 body: JSON.stringify(payload)
             })           
 
+            console.log(resp)
+
             if (resp.ok) {
                 const result = await resp.json()
+                console.log(result)
                 setEstado("success")
                 toast.success(result.message)
                 DeleteCarrito()
@@ -124,8 +128,8 @@ const PagoVerificado = () => {
             setEstado("error")
         } catch (error) {
             setEstado("Error")
-            console.log("Error enviando carrito", error)
-            toast.error("Error de conexion con el servidor")
+            //console.log("Error enviando al carrito", error)
+            toast.error("Error de conexión con el servidor")
         }
     }
 
@@ -139,7 +143,7 @@ const PagoVerificado = () => {
 
         if (!numUnicoPedido) {
             setEstado("error")
-            setTextError("No se pudo generar el numero de pedido")           
+            setTextError("No se pudo generar el número de pedido")           
             alert("ENTRO")
         }
 
@@ -375,7 +379,7 @@ const PagoVerificado = () => {
                                     }
                                     DeleteBorrarModoPago()
                                 }}
-                                className={`btn btn-dark fw-bolder custom-bg-blue-marine w-25 ${estado === "loading" ? "disabled opactiy-50" : ""}`}
+                                className={`btn btn-dark fw-bolder custom-bg-blue-marine ${estado === "loading" ? "disabled opactiy-50" : ""}`}
                             >
                                 Volver al inicio
                             </Link>

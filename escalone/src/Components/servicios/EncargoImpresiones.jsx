@@ -12,6 +12,7 @@ import { ApiHelpers } from "../utils/apiHelpers";
 import SeccionArchivos from "./sectionServices/SectionFiles";
 import SeccionDatosCliente from "./sectionServices/SectionDataClient";
 import SeccionEntrega from "./sectionServices/SectionDelivery";
+import { Link } from 'react-router-dom'
 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
@@ -119,11 +120,16 @@ const EncargoImpresiones = () => {
     return (
         <>
             <section id="order" className="mb-3">
-                <h1 className="text-center my-3">SU PEDIDO</h1>
-                <section>
-                    <h2 className="text-center pb-3 fw-bolder h3">
-                        Subí tus archivos y retiralos pronto
-                    </h2>
+                <h1 className="text-center my-3">SU PEDIDO</h1>                                
+                <section>                    
+                    <section className="container d-flex justify-content-center">
+                        <div className="flex-grow-0">
+                            <Link to="/servicios" className="link-secondary"> <i class="fa-solid fa-angle-left"></i> Atras</Link>
+                        </div>
+                        <h2 className="text-center pb-1 fw-bolder h3 flex-grow-1">
+                            Subí tus archivos y retiralos pronto
+                        </h2>
+                    </section>                    
                     <hr className="container" />
                     {loading ? <div className='text-center enviando'>Enviando...</div> : ""}
                     <section>

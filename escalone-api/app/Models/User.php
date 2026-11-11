@@ -17,10 +17,13 @@ class User extends Authenticatable implements JWTSubject
 
     protected $fillable = [
      'nombre_usuario',
+     'apellido',
      'telefono',
      'email',
      'password',
-     'comentario',
+     'google_id',
+     'activo',
+     'imagen_perfil',     
     ];
 
     public function orders()

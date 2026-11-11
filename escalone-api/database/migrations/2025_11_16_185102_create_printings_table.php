@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('file');
             $table->string('tipo_papel',10);
-            $table->unsignedInteger('num_copias');            
+            $table->text('comentario')->nullable();
+            $table->unsignedInteger('num_copias');
             $table->decimal('precio_total',10,2)->nullable();
             $table->timestamps();
         });

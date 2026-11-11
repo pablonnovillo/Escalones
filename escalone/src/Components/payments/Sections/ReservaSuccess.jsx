@@ -6,7 +6,7 @@ export const ReservaSuccess = ({data, numeroReserva, modoPago}) => {
                     <i className="fa-sharp-duotone fa-solid fa-circle-check fa-2x py-2"></i>
                     <h1 className="text-center fw-bolder h3">TU RESERVA ESTA CONFIRMADO</h1>
                 </section>
-                <div className="mx-auto width-static-25">
+                <div className="mx-auto w-50">
                     <table className="table table-borderless">
                         <tbody>
                             <tr>

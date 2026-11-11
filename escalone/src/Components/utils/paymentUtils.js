@@ -21,12 +21,20 @@ export const handleCreatePreference = async (params) => {
         
         if (!res.ok) throw new Error("Error en la respuesta del servidor");
         const data = await res.json();
-        setPreferenceId(data.preferenceId);
-        setShowWallet(true);
+        if(data.preferenceId){
+            setPreferenceId(data.preferenceId);    
+        }
+        
+        if(data.init_point){
+            window.location.href = data.init_point;
+        }else{
+            setShowWallet(true);    
+        }        
 
-        if (data.init_point) window.location.href = data.init_point;
+        //if (data.init_point) window.location.href = data.init_point;
     } catch (error) {
         toast.error("Error al procesar el pago");
+        setShowWallet(false)
     } finally {
         setIsLoading(false);
     }
@@ -38,7 +46,7 @@ export const handlePagarDirecto = (e, params) => {
     const { number, name, expiry, cvv } = cardData;
 
     if (!number || !name || !expiry || !cvv) {
-        toast.error("Por favor, completa todos los campos de la tarjeta")
+        toast.error("Por favor, completa los datos de la tarjeta")
         return;
     }
 
@@ -49,17 +57,17 @@ export const handlePagarDirecto = (e, params) => {
    
 
     if (!numberValidation.isValid) {
-        toast.error("Numero de tarjeta invalido")
+        toast.error("Número de tarjeta invalido")
         return
     }
 
     if (!expiryValidation.isValid) {
-        toast.error("Fecha de vencimiento no valido")
+        toast.error("Fecha de vencimiento no válido")
         return
     }
 
     if (!cvvValidation.isValid) {
-        toast.error("CVV no valido")
+        toast.error("CVV no válido")
         return
     }
 

@@ -37,7 +37,7 @@ trait MailSender
             $mail->send();
             //return ['success' => true];            
         } catch (\Exception $e) {
-            \Log::error("Fallo de envio de corre a " . $e->getMessage());
+            \Log::error("Fallo de envio de correo a " . $e->getMessage());
             //throw new \Exception("No pudimos enviar a su correo la solicitud, verifique si es correcto o intente más tarde.");
             /*return [
                'success' => false,

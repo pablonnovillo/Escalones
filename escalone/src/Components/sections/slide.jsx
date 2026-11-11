@@ -30,7 +30,10 @@ const Slide = () => {
                             <Link to="/servicios" className="btn btn-primary fs-4 m-2">
                                 Hacé tu pedido
                             </Link>
-                            <Link to="/servicios/reservas" className="btn btn-light fs-4 m-2">
+                            {/*<Link to="/servicios/reservas" className="btn btn-light fs-4 m-2">
+                                Ir a la tienda
+                            </Link>*/}
+                            <Link to="/tienda" className="btn btn-light fs-4 m-2">
                                 Ir a la tienda
                             </Link>
                         </article>

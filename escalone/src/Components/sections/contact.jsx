@@ -33,8 +33,14 @@ const Contact = () => {
             }           
             const respuesta = await ApiHelpers(response)
             toast.error(respuesta)            
-        } catch (error) {            
-            toast.error(error)
+        } catch (error) {     
+            console.log(error)
+            if(error instanceof TypeError)       
+            {
+                toast.error("El servidor no esta disponible. Porfavor Intente más tarde")
+                return
+            }
+            toast.error(error)            
         }finally{
             setLoading(false)
         }

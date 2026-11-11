@@ -1,4 +1,29 @@
 const Faq = () => {
+
+    const faqs = [
+      {
+        id:1,
+        question: "¿Cómo funcionan las entregas?",
+        answer: "Realizamos entregas de los pedidos de impresión según la disponibilidad y ubicación. Al realizar tu pedido te informaremos las opciones de entrega disponibles."
+      },
+      {
+        id:2,
+        question: "¿Cuáles son los métodos de pago?",
+        answer: "Podés abonar tus pedidos y reservas utilizando los medios de pago disponibles en nuestra tienda online."
+      },
+      {
+        id:3,
+        question: "¿Qué servicios se pueden reservar?",
+        answer: "Podés reservar los espacios y servicios disponibles de Escalones, según los horarios y la disponibilidad del momento."
+      },
+      {
+        id:4,
+        question: "¿Hay descuentos para estudiantes?",
+        answer: "Sí, contamos con beneficios y descuentos para estudiantes. Consultanos para conocer las promociones disponibles."
+      }
+    ]
+
+
     return (
         <>
             <section className="faq container">
@@ -8,7 +33,34 @@ const Faq = () => {
                     <div className="col-md-6">
                         <div className="accordion" id="accordionExample1">
                             {/* Pregunta 1 */}
-                            <section className="accordion-item">
+                            {faqs.slice(0,2).map((faq, index)=>(
+                                <section className="accordion-item" key={faq.id}>
+                                    <h2 className="accordion-header">
+                                        <button
+                                            className="accordion-button collapsed faq_subtitle"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target={`#collapse${index + 1}`}
+                                            aria-expanded="false"
+                                            aria-controls={`collapse${index + 1}`}
+                                        >
+                                            {faq.question}
+                                        </button>
+                                    </h2>
+
+                                    <div
+                                        id={`collapse${index + 1}`}
+                                        className="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample1"
+                                    >
+                                        <div className="accordion-body">
+                                            {faq.answer}
+                                        </div>
+                                        
+                                    </div>
+                                </section>
+                            ))}
+                            {/*<section className="accordion-item">
                                 <h2 className="accordion-header">
                                     <button
                                         className="accordion-button collapsed faq_subtitle"
@@ -37,10 +89,10 @@ const Faq = () => {
                                         though the transition does limit overflow.
                                     </div>
                                 </div>
-                            </section>
+                            </section>*/}
 
                             {/* Pregunta 2 */}
-                            <section className="accordion-item">
+                            {/*<section className="accordion-item">
                                 <h2 className="accordion-header">
                                     <button
                                         className="accordion-button collapsed faq_subtitle"
@@ -69,7 +121,7 @@ const Faq = () => {
                                         though the transition does limit overflow.
                                     </div>
                                 </div>
-                            </section>
+                            </section>*/}
                         </div>
                     </div>
 
@@ -77,7 +129,34 @@ const Faq = () => {
                     <div className="col-md-6">
                         <div className="accordion" id="accordionExample2">
                             {/* Pregunta 3 */}
-                            <section className="accordion-item">
+                             {faqs.slice(2,4).map((faq, index)=>(
+                                <section className="accordion-item" key={faq.id}>
+                                    <h2 className="accordion-header">
+                                        <button
+                                            className="accordion-button collapsed faq_subtitle"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target={`#collapse${index + 3}`}
+                                            aria-expanded="false"
+                                            aria-controls={`collapse${index + 3}`}
+                                        >
+                                            {faq.question}
+                                        </button>
+                                    </h2>
+
+                                    <div
+                                        id={`collapse${index + 3}`}
+                                        className="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample2"
+                                    >
+                                        <div className="accordion-body">
+                                            {faq.answer}
+                                        </div>
+                                        
+                                    </div>
+                                </section>
+                            ))}
+                            {/*<section className="accordion-item">
                                 <h2 className="accordion-header">
                                     <button
                                         className="accordion-button collapsed faq_subtitle"
@@ -106,10 +185,10 @@ const Faq = () => {
                                         though the transition does limit overflow.
                                     </div>
                                 </div>
-                            </section>
+                            </section>*/}
 
                             {/* Pregunta 4 */}
-                            <section className="accordion-item">
+                            {/*<section className="accordion-item">
                                 <h2 className="accordion-header">
                                     <button
                                         className="accordion-button collapsed faq_subtitle"
@@ -138,7 +217,7 @@ const Faq = () => {
                                         though the transition does limit overflow.
                                     </div>
                                 </div>
-                            </section>
+                            </section>*/}
                         </div>
                     </div>
                 </section>

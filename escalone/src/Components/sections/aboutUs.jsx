@@ -16,7 +16,7 @@ const AboutUs = () => {
                         <article>
                             <img
                                 src="images/Pablo.jpeg"
-                                alt="perfil1"
+                                alt="Pablo Novillo"
                                 className="profiles_carnet object-fit-cover rounded"
                             />
                             <h5>
@@ -28,7 +28,7 @@ const AboutUs = () => {
                         <article>
                             <img
                                 src="images/Sabrina.jpeg"
-                                alt="perfil2"
+                                alt="Sabrina Gigena"
                                 className="profiles_carnet object-fit-cover rounded"
                             />
                             <h5>

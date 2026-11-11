@@ -1,5 +1,9 @@
+import {calcularDiferenciaHoras} from '../../utils/calcularDiferenciaHoras'
+
 const DetailsTurno = ({ serviceTitle, datos, adicional, servicePrecio }) => {
     if (!datos) return null;
+
+    const duracion = calcularDiferenciaHoras(datos.horaInicio, datos.horaFinal);
 
     return (
         <section className="text-center">
@@ -19,14 +23,22 @@ const DetailsTurno = ({ serviceTitle, datos, adicional, servicePrecio }) => {
                         <td>{datos.horaInicio} hrs a {datos.horaFinal?.slice(0, 5)} hrs</td>
                     </tr>
                     <tr>
+                        <th>Duración:</th>
+                        <td>{duracion} {duracion==1 ? "hora": "horas"}</td>
+                    </tr>
+                    <tr>
                         <th>Adicional:</th>
                         <td>{adicional || "sin consumo"}</td>
-                    </tr>
+                    </tr>                   
                 </tbody>
                 <tfoot>
                     <tr className="border-top">
-                        <th className="fw-bolder">Valor Total:</th>
-                        <td className="fw-bolder">${servicePrecio}</td>
+                        <td>Valor Total:</td>
+                        <td>${servicePrecio}</td>
+                    </tr>
+                     <tr>
+                        <td className="fw-bolder">Reserva a pagar:</td>
+                        <td className="fw-bolder">{datos.senia}</td>
                     </tr>
                 </tfoot>
             </table>

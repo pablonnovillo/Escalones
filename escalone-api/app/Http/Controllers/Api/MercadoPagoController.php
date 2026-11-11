@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Http;
 
 class MercadoPagoController extends Controller
 {   
+
+    private $frontUrl;
+
+    public function __construct()
+    {
+        $this->frontUrl = env('APP_URL_FRONT');
+    } 
+
     public function createPreference(Request $request)
     {
       $accessToken = env('MERCADOPAGO_ACCESS_TOKEN');
@@ -21,12 +29,9 @@ class MercadoPagoController extends Controller
                 ]
             ],
             "back_urls" => [
-                //"success" => "https://www.google.com/",
-                 "success" => "https://escalone-test.web.app/pago-verificado",
-                //"failure" => "http://localhost:5173",
-                //"pending" => "http://localhost:5173"               
-                "failure" => "https://escalone-test.web.app/pago-rechazado",
-                "pending" => "https://escalone-test.web.app/pago-rechazado"
+                "success" => env('REDIRECT_PAY_CONFIRM'),
+                "failure" => env('REDIRECT_PAY_FAILED'),
+                "pending" => env('REDIRECT_PAY_PENDING'),
             ]
             //"auto_return" => "approved"            
         ];
@@ -57,4 +62,16 @@ class MercadoPagoController extends Controller
 
         return response()->json(['status' => 'ok']);
     }   
+
+    public function rutaAprobadoMP(){        
+        return redirect("{$this->frontUrl}/pago-verificado");
+    }
+
+    public function rutaFailedMP(){        
+        return redirect("{$this->frontUrl}/servicios");
+    }
+
+    public function rutaPendingMP(){
+        return redirect("{$this->frontUrl}");
+    }
 }

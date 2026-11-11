@@ -18,6 +18,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/register', [AuthController::class,'register']);
 Route::post('/iniciar-sesion',[AuthController::class,'login']);
+Route::post('/login-google',[AuthController::class,'googleLogin']);
 Route::post('/contacto',[ContactController::class,'index']);
 
 //Rutas de forgat Contraseña PROBAR
@@ -46,6 +47,8 @@ Route::post('/abonar-carrito',[OrderController::class,'paymentCart']);
 
 Route::middleware([JwtProtector::class])->group(function(){
     Route::get('/mis-reservas',[BookingController::class,'userBookings']);
+    Route::get('/mis-impresiones',[PrintingController::class,'userPrintings']);
+    Route::post('/update-profile',[AuthController::class,'updateProfile']);
 });
 
 

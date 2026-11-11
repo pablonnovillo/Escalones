@@ -27,7 +27,7 @@ class OrderController extends Controller
 
             $order = Order::create([
                 'modo_entrega'=> $request->modo_entrega,
-                'direccion_envio'=> $request->domicilio ?? null,
+                'dirección_envio'=> $request->domicilio ?? null,
                 'numero_pedido'=> $request->numero_pedido,
                 'precio_total'=> $request->precio_total,
                 'created_at'=> now(),

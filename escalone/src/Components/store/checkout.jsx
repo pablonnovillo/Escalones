@@ -45,7 +45,7 @@ const Checkout = () => {
 
     const verificarMonto = () => {
         if (totalCarrito <= 0) {
-            toast.error("El monto total debe ser mayor a 0 para realizar la compra");
+            toast.error("No hay productos en el carrito!");
             return false;
         }
         return true;
@@ -64,7 +64,7 @@ const Checkout = () => {
         setCarrito(nuevoCarrito)
     }
 
-    const actualizarCarrito = (carrito, email, formaEntrega, domicilio = null) => {
+    const actualizarCarrito = (carrito, email, formaEntrega, domicilio) => {
         const pedidoCompleto = {
             productos: carrito.map(item => ({
                 id: item.id,
@@ -81,13 +81,22 @@ const Checkout = () => {
         localStorage.setItem('carrito_data', JSON.stringify(pedidoCompleto));
     }
 
+    const eliminarProducto = (id) => {
+        const nuevoCarrito = carrito.filter(function(item){
+            return item.id!==id
+        })
+
+        setCarrito(nuevoCarrito)
+        localStorage.setItem('carrito',JSON.stringify(nuevoCarrito))
+    }
+
 
     const createPreference = async (e) => {
         e.preventDefault()
         if (!verificarMonto()) return; // <--- Bloqueo aquí
         setIsLoading(true)
         const esValido = await validarCarrito()
-        console.log()
+        
         if (!esValido) {
             setIsLoading(false)
             return
@@ -117,15 +126,30 @@ const Checkout = () => {
                 })
             })
 
+            if(!res.ok) throw new Error("Error en la respuesta del servidor")
+
             const data = await res.json()
-            console.log(data)
-            if (!res.ok) throw new Error()
+            //console.log(data)
+            console.log(data.preferenceId)  
+            if(data.preferenceId){
+                console.log(data.preferenceId)  
+                setPreferenceId(data.preferenceId)  
+
+            }
+
+            if(data.init_point){
+                window.location.href=data.init_point;
+            }
+            else{
+                setShowWallet(true)    
+            }
+            /*if (!res.ok) throw new Error()
             setPreferenceId(data.preferenceId)
             setShowWallet(true)
 
             if (data.init_point) {
                 window.location.href = data.init_point
-            }
+            }*/
 
         } catch (error) {
             console.log("error en la preferencia", error)
@@ -162,7 +186,7 @@ const Checkout = () => {
         const { number, name, expiry, cvv } = cardData
 
         if (!number || !name || !expiry || !cvv) {
-            toast.error("Por favor, completa todos los campos de la tarjeta")
+            toast.error("Por favor, ingrese los datos de la tarjeta")
             return
         }
 
@@ -237,7 +261,7 @@ const Checkout = () => {
 
     return (
         <main className="container my-5 flex-grow-1">
-            {isLoading ? <div className='text-center enviando py-3'>Enviando...</div> : ""}
+            {isLoading ? <div className='text-center enviando py-3'>Solicitando...</div> : ""}
             <div className="row g-4">
                 {/** resumen compra */}
                 <div className="col-lg-8">
@@ -251,6 +275,7 @@ const Checkout = () => {
                                     <tr className="text-muted small">
                                         <th>Producto</th>
                                         <th className="text-center">Cantidad</th>
+                                        <th className="text-center">acción</th>
                                         <th className="text-end">Subtotal</th>
                                     </tr>
                                 </thead>
@@ -283,6 +308,14 @@ const Checkout = () => {
                                                     onChange={(e) => actualizarCantidadProducto(item.id, e.target.value)}
                                                     min="0"
                                                 />
+                                            </td>
+                                            <td className="text-center">
+                                                <button
+                                                    className="btn btn-link text-danger p-0"
+                                                    onClick={()=>eliminarProducto(item.id)}
+                                                >
+                                                    <i className="fa-solid fa-trash-can"></i>
+                                                </button>                                                
                                             </td>
                                             <td className="text-end fw-bold w-25">AR$ {(item.precio * item.cantidad).toLocaleString()}</td>
                                         </tr>

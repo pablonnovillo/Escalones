@@ -56,7 +56,7 @@ export default function ManagementAccount() {
                     <section className="container text-center text-white">
                         <h1 className="pt-2 pb-1 fw-bolder">Gestión de cuenta</h1>
                         <hr />
-                        {loading ? <div className='text-center registrando'>Enviando...</div> : ""}                    
+                        {loading ? <div className='text-center registrando'>Verificando...</div> : ""}                    
                         <div className="row">
                             <div className="col-12 w-50 mx-auto">
                                 <form onSubmit={submit}>
@@ -98,7 +98,7 @@ export default function ManagementAccount() {
                                     </div>                                    
                                     <div className="mb-3">
                                         <p>
-                                            <Link to="/" className="text-white">
+                                            <Link to="/auth/iniciar-sesion" className="text-white">
                                                 Volver
                                             </Link>
                                         </p>
