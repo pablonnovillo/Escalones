@@ -27,6 +27,14 @@ El proyecto se encuentra dividido en dos aplicaciones principales:
 - `escalone/` — Frontend desarrollado con React y Vite.
 - `escalone-api/` — Backend/API desarrollado con PHP y Laravel.
 
+## Aplicación móvil
+
+ESCALONES también cuenta con una aplicación móvil
+desarrollada con React Native y Expo.
+
+Repositorio:
+https://github.com/pablonnovillo/Escalones-Mobile
+
 ## Tecnologías utilizadas
 
 ### Frontend
@@ -182,6 +190,19 @@ El proyecto utiliza variables de entorno para configurar la conexión con la bas
 Por seguridad, los archivos `.env` que contienen credenciales reales no se incluyen en el repositorio.
 
 El archivo `.env.example` del backend puede utilizarse como referencia para realizar la configuración necesaria.
+
+## Arquitectura del sistema
+
+ESCALONES utiliza una arquitectura cliente-servidor.
+
+El frontend web está desarrollado con React y Vite,
+mientras que la aplicación móvil utiliza React Native
+y Expo.
+
+Ambas aplicaciones se comunican con una API REST
+desarrollada con Laravel, encargada de procesar
+las solicitudes, gestionar la lógica de negocio
+y acceder a la base de datos MySQL.
 
 ## Puertos utilizados
 
