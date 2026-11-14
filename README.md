@@ -195,9 +195,7 @@ El archivo `.env.example` del backend puede utilizarse como referencia para real
 
 ESCALONES se encuentra actualmente en desarrollo.
 
-La plataforma web cuenta con una parte importante de sus funcionalidades implementadas y se continúa trabajando en mejoras y nuevas funcionalidades.
-
-Como evolución futura del proyecto se contempla complementar el sistema con una aplicación móvil.
+La plataforma web cuenta con una parte importante de sus funcionalidades implementadas y se continúa trabajando en las ultimas mejoras y comprobar que todo funcione correctamente.  
 
 ## Autor
 
